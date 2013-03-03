@@ -1,0 +1,26 @@
+#!/bin/bash
+while read line
+do
+  echo $line | grep -E '^#' > /dev/null
+  if [ $? -eq 0 ]; then
+    continue
+  fi
+
+  host=`echo -n $line | awk '{print $1}'`
+  algo=`echo -n $line | awk '{print $2}'`
+  sig=`echo -n $line | awk '{print $3}' | base64 -d | sha1sum - | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
+  
+  case "$algo" in
+    'ssh-rsa')
+      algo="1"
+      ;;
+    'ssh-dss')
+      algo="2"
+      ;;
+    'ecdsa-sha2-nistp256')
+      algo="3"
+      ;;
+  esac
+
+  echo "${host}. IN SSHFP $algo 1 $sig"
+done
