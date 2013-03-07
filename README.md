@@ -4,7 +4,7 @@ Very basic shell script to convert ssh-keyscan output to SSHFP DNS records.
 
 ## description
 
-This is a really basic script which sue ssh-keyscan output and convert them in SSHFP DNS records. The famous sshfp tool already does this but still does not support ecdsa, i.e., ecdsa-sha2-nistp256.
+This is a really basic script which use ssh-keyscan output and convert them in SSHFP DNS records. The famous sshfp tool already does this but still does not support ecdsa, i.e., ecdsa-sha2-nistp256.
 
 [draft-os-ietf-sshfp-ecdsa-sha2-00](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00)
 
@@ -19,4 +19,4 @@ This is a really basic script which sue ssh-keyscan output and convert them in S
 
 ## license
 
-This script is released under the new-BSD license.
+Public domain
