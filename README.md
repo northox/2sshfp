@@ -14,6 +14,9 @@ See [draft-os-ietf-sshfp-ecdsa-sha2-00](http://tools.ietf.org/html/draft-os-ietf
     bombshock.mantor.org. IN SSHFP 3 1 A924EAB29F8BBF2E6142CDCECAD1DCB616FA8EF8
     shockwave.mantor.org. IN SSHFP 2 1 4AC5A2243CEB9D7174DB456613B454D6299F30A8
     shockwave.mantor.org. IN SSHFP 1 1 D989A5820A0E4FD4D3A03A1297E0D9897BA59063
+    
+Merge the resulting DNS records in your zone and use them, e.g. configure SSH client to verify SSHFP 
+records via 'VerifyHostKeyDNS yes'. Make sure you're using DNSSEC ;).
 
 ## license
 
