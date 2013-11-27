@@ -1,4 +1,4 @@
-# s2sshfp
+# 2sshfp
 
 Very basic shell scripts to create SSHFP DNS records.
 
