@@ -11,15 +11,27 @@ would take years before getting in production.
 
 See [draft-os-ietf-sshfp-ecdsa-sha2-00](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00).
 
+Supported: rsa/dsa/ecdsa ciphers and sha1/sha256 hash algorithms
+
 ## SSHFP records?
 
-Merge the resulting DNS records in your zone and use them, e.g. configure SSH 
-client to verify SSHFP records via 'VerifyHostKeyDNS yes'. Make sure you're using 
-DNSSEC ;).
+SSHFP are basically host ssh key fingerprints storing in DNS records. If you can trust DNS query (i.e. DNSSEC)
+you can validate the fingerprint automatically.
+
+Here's one: soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2
+
+The first number refers to the cipher of the key (1=rsa, 2=dsa, 3=ecdsa), the second number is the hash algorithm 
+(1=sha1, 2=sha256) used and the last long string is the hash of the key itself.
+
+## What is it used for?
+
+Merge the resulting DNS records in your zone and use them: 
+
+  - configure SSH client to verify SSHFP records via 'VerifyHostKeyDNS yes'. Make sure you're using DNSSEC ;).
 
 ### ssh-hostkeys2sshfp
 
-Recommended - This script must be used locally and uses /etc/ssh/ssh_host_*_key.pub keys.
+Recommended - This script must be used locally and uses `/etc/ssh/ssh_host_*_key.pub keys`.
 
     > ./ssh-hostkeys2sshfp soundwave.mantor.org
     soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2
