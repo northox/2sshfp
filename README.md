@@ -4,10 +4,22 @@ Very basic shell scripts to create SSHFP DNS records.
 
 ## description
 
-Those are basic shell scripts to create SSHFP DNS records. The famous sshfp tool already does this but still does not support ecdsa, i.e., ecdsa-sha2-nistp256 - [draft-os-ietf-sshfp-ecdsa-sha2-00](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00).
+I wrote those very basic shell script to create SSHFP DNS records when I realized 
+[sshfp tool](https://github.com/xelerance/sshfp) didn't support ECDSA (i.e. 
+ecdsa-sha2-nistp256) and [my patch](https://github.com/xelerance/sshfp/pull/2) 
+would take years before getting in production. 
+
+See [draft-os-ietf-sshfp-ecdsa-sha2-00](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00).
+
+## SSHFP records?
+
+Merge the resulting DNS records in your zone and use them, e.g. configure SSH 
+client to verify SSHFP records via 'VerifyHostKeyDNS yes'. Make sure you're using 
+DNSSEC ;).
 
 ### ssh-hostkeys2sshfp
-This script must be used locally and uses /etc/ssh/ssh_host_*_key.pub keys.
+
+Recommended - This script must be used locally and uses /etc/ssh/ssh_host_*_key.pub keys.
 
     > ./ssh-hostkeys2sshfp soundwave.mantor.org
     soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2
@@ -18,7 +30,9 @@ This script must be used locally and uses /etc/ssh/ssh_host_*_key.pub keys.
     soundwave.mantor.org. IN SSHFP 3 2 4AFA3D9CE5C1C296DDA5624D5331575F202A67C40A425F930F12113CD20644AB
 
 ### ssh-keyscan2sshfp
-Not recommended - This one used ssh-keyscan and connects to ssh servers to extract SSH keys remotely. Oviously, you need to trust your network.. which you don't. 
+
+Not recommended - This one used ssh-keyscan and connects to ssh servers to extract 
+SSH keys remotely. Oviously, you need to trust your network.. which you don't. 
 
     > ./ssh-keyscan2sshfp bombshock.mantor.org shockwave.mantor.org
     ####################################################
@@ -38,4 +52,4 @@ Not recommended - This one used ssh-keyscan and connects to ssh servers to extra
 
 ## license
 
-public domain
+Public domain
