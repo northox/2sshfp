@@ -27,7 +27,7 @@ do
     if [ -f $key_path ]
     then
       eval "h=\${hash${j}}"
-      sshfp=`awk '{print $2}' $key_path | openssl base64 | openssl dgst -${h} | sed 's/^.* //' | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
+      sshfp=`awk '{print $2}' $key_path | openssl base64 -d -A | openssl dgst -${h} | sed 's/^.* //' | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
       echo "${fqdn}. IN SSHFP ${i} ${j} ${sshfp}"
     fi
   done
