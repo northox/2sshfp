@@ -31,7 +31,7 @@ Merge the resulting DNS records in your zone and use them:
 
 ### ssh-hostkeys2sshfp
 
-Recommended - This script must be used locally and uses `/etc/ssh/ssh_host_*_key.pub keys`.
+Recommended - If using OpenSSH, try `ssh-keygen -r <hostname>` command. Otherwise, run this script locally. Both creates SSHFP record out of `/etc/ssh/ssh_host_*_key.pub` keys.
 
     > ./ssh-hostkeys2sshfp soundwave.mantor.org
     soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2
