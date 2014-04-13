@@ -19,9 +19,9 @@ while IFS= read -r line; do
 
   host=`echo -n $line | awk '{print $1}'`
   algo=`echo -n $line | awk '{print $2}'`
-  sig_sha1=`echo -n $line | awk '{print $3}' | base64 -d | sha1sum - | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
-  sig_sha2=`echo -n $line | awk '{print $3}' | base64 -d | sha256sum - | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
-  
+  sig_sha1=`echo -n $line | awk '{print $3}' | openssl base64 -d -A | openssl dgst -sha1 | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
+  sig_sha2=`echo -n $line | awk '{print $3}' | openssl base64 -d -A | openssl dgst -sha | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
+
   case "$algo" in
     'ssh-rsa')
       algo="1"
