@@ -14,11 +14,12 @@ fqdn=$1
 cipher1='rsa'
 cipher2='dsa'
 cipher3='ecdsa'
+cipher4='ed25519'
 
 hash1='sha1'
 hash2='sha256' 
 
-for i in `seq 1 3` # cipher
+for i in `seq 1 4` # cipher
 do
   for j in `seq 1 2` # hash
   do

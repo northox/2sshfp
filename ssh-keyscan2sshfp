@@ -9,7 +9,7 @@ echo "Should not be used unless you can really trust your"
 echo "network... but who can?!?"
 echo "####################################################"
 
-sigs=`ssh-keyscan -t ecdsa,dsa,rsa $* 2> /dev/null`
+sigs=`ssh-keyscan -t ecdsa,dsa,rsa,ed25519 $* 2> /dev/null`
 
 while IFS= read -r line; do
   echo $line | grep -E '^#' > /dev/null
@@ -19,8 +19,8 @@ while IFS= read -r line; do
 
   host=`echo -n $line | awk '{print $1}'`
   algo=`echo -n $line | awk '{print $2}'`
-  sig_sha1=`echo -n $line | awk '{print $3}' | openssl base64 -d -A | openssl dgst -sha1 | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
-  sig_sha2=`echo -n $line | awk '{print $3}' | openssl base64 -d -A | openssl dgst -sha | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
+  sig_sha1=`echo -n $line | awk '{print $3}' | openssl base64 -d -A | openssl dgst -sha1 -r | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
+  sig_sha2=`echo -n $line | awk '{print $3}' | openssl base64 -d -A | openssl dgst -sha256 -r | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
 
   case "$algo" in
     'ssh-rsa')
@@ -31,6 +31,9 @@ while IFS= read -r line; do
       ;;
     'ecdsa-sha2-nistp256')
       algo="3"
+      ;;
+    'ssh-ed25519')
+      algo="4"
       ;;
   esac
 
