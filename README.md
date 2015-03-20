@@ -16,8 +16,8 @@ Supports rsa, dsa, **ecdsa and ed25519** ciphers and sha1/sha256 hash algorithms
 
 ## SSHFP records?
 
-SSHFP are basically host ssh key fingerprints storing in DNS records. If you can trust DNS query (i.e. DNSSEC)
-you can validate the fingerprint automatically.
+SSHFP are basically host ssh key fingerprints stored in DNS records. If you can trust DNS query (i.e. DNSSEC)
+you can validate SSH's host fingerprint automatically.
 
 Here's one: soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2
 
@@ -45,7 +45,7 @@ Recommended - If using OpenSSH, try `ssh-keygen -r <hostname>` command. Otherwis
 ### ssh-keyscan2sshfp
 
 Not recommended - This one used ssh-keyscan and connects to ssh servers to extract 
-SSH keys remotely. Oviously, you need to trust your network.. which you don't. 
+SSH keys remotely. Oviously, you need to trust your network.. which you don't - ARP/DNS poisoning, etc. 
 
     > ./ssh-keyscan2sshfp bombshock.mantor.org shockwave.mantor.org
     ####################################################
@@ -65,4 +65,4 @@ SSH keys remotely. Oviously, you need to trust your network.. which you don't.
 
 ## license
 
-Public domain
+Public domain - A gift to the Internet
