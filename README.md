@@ -4,13 +4,13 @@ Very basic shell scripts to create SSHFP DNS records.
 
 ## Description
 
-I wrote those very basic shell script to create SSHFP DNS records when I realized 
+I wrote those very basic script to create SSHFP DNS records when I realized 
 [sshfp tool](https://github.com/xelerance/sshfp) didn't support ECDSA (i.e. 
 ecdsa-sha2-nistp256) and [my patch](https://github.com/xelerance/sshfp/pull/2) 
-would take years before getting in production. See [draft-os-ietf-sshfp-ecdsa-sha2-00](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00).
+would take years before getting in to production. See [draft-os-ietf-sshfp-ecdsa-sha2-00](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00).
 
 Now it has evolved and also support [ed25519](http://tools.ietf.org/html/draft-moonesamy-sshfp-ed25519-01) 
-as the sshfp tool seems to dead.
+as the sshfp tool seems to be dead.
 
 ## Features
 Supports rsa, dsa, **ecdsa and ed25519** ciphers and sha1/sha256 hash algorithms.
@@ -30,8 +30,8 @@ hash algorithm (1=sha1, 2=sha256) used and the last long string is the hash of t
 
 Merge the resulting DNS records in your zone and use them: 
 
-  - configure SSH client to verify SSHFP records via 'VerifyHostKeyDNS yes'. 
-  - Make sure you're using DNSSEC ;).
+  - configure SSH client to verify SSHFP records via 'VerifyHostKeyDNS yes';
+  - make sure you're using DNSSEC. ;)
 
 ### ssh-hostkeys2sshfp
 
