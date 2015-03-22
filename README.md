@@ -9,30 +9,34 @@ I wrote those very basic shell script to create SSHFP DNS records when I realize
 ecdsa-sha2-nistp256) and [my patch](https://github.com/xelerance/sshfp/pull/2) 
 would take years before getting in production. See [draft-os-ietf-sshfp-ecdsa-sha2-00](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00).
 
-Now it has evolved and also support [ed25519](http://tools.ietf.org/html/draft-moonesamy-sshfp-ed25519-01) as the sshfp tool seems to dead.
+Now it has evolved and also support [ed25519](http://tools.ietf.org/html/draft-moonesamy-sshfp-ed25519-01) 
+as the sshfp tool seems to dead.
 
 ## Features
 Supports rsa, dsa, **ecdsa and ed25519** ciphers and sha1/sha256 hash algorithms.
 
 ## SSHFP records?
 
-SSHFP are basically host ssh key fingerprints stored in DNS records. If you can trust DNS query (i.e. DNSSEC)
-you can validate SSH's host fingerprint automatically.
+SSHFP are basically host ssh key fingerprints stored in DNS records. If you can trust DNS 
+query (i.e. DNSSEC) you can validate SSH's host fingerprint automatically.
 
-Here's one: soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2
+Here's one: 
+```soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2```
 
-The first number refers to the cipher of the key (1=rsa, 2=dsa, 3=ecdsa), the second number is the hash algorithm 
-(1=sha1, 2=sha256) used and the last long string is the hash of the key itself.
+The first number refers to the cipher of the key (1=rsa, 2=dsa, 3=ecdsa), the second number is the 
+hash algorithm (1=sha1, 2=sha256) used and the last long string is the hash of the key itself.
 
 ## What is it used for?
 
 Merge the resulting DNS records in your zone and use them: 
 
-  - configure SSH client to verify SSHFP records via 'VerifyHostKeyDNS yes'. Make sure you're using DNSSEC ;).
+  - configure SSH client to verify SSHFP records via 'VerifyHostKeyDNS yes'. 
+  - Make sure you're using DNSSEC ;).
 
 ### ssh-hostkeys2sshfp
 
-Recommended - If using OpenSSH, try `ssh-keygen -r <hostname>` command. Otherwise, run this script locally. Both creates SSHFP record out of `/etc/ssh/ssh_host_*_key.pub` keys.
+Recommended - If using OpenSSH, try `ssh-keygen -r <hostname>` command. Otherwise, run this script 
+locally. Both creates SSHFP record out of `/etc/ssh/ssh_host_*_key.pub` keys.
 
     > ./ssh-hostkeys2sshfp soundwave.mantor.org
     soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2
@@ -44,8 +48,8 @@ Recommended - If using OpenSSH, try `ssh-keygen -r <hostname>` command. Otherwis
 
 ### ssh-keyscan2sshfp
 
-Not recommended - This one used ssh-keyscan and connects to ssh servers to extract 
-SSH keys remotely. Oviously, you need to trust your network.. which you don't - ARP/DNS poisoning, etc. 
+Not recommended - This one used ssh-keyscan and connects to ssh servers to extract SSH keys remotely. 
+Oviously, you need to trust your network.. which you don't right? - ARP/DNS poisoning, etc. 
 
     > ./ssh-keyscan2sshfp bombshock.mantor.org shockwave.mantor.org
     ####################################################
