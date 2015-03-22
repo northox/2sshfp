@@ -5,8 +5,8 @@
 # license: public domain
 
 echo "####################################################"
-echo "Should not be used unless you can really trust your"
-echo "network... but who can?!?"
+echo "# Should not be used unless you can really trust your"
+echo "# network... but who can?!?"
 echo "####################################################"
 
 sigs=`ssh-keyscan -t ecdsa,dsa,rsa,ed25519 $* 2> /dev/null`
