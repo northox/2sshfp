@@ -23,7 +23,7 @@ query (i.e. DNSSEC) you can validate SSH's host fingerprint automatically.
 Here's one: 
 ```soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2```
 
-The first number refers to the cipher of the key (1=rsa, 2=dsa, 3=ecdsa), the second number is the 
+The first number refers to the cipher of the key (1=rsa, 2=dsa, 3=ecdsa, 4=ed25519), the second number is the 
 hash algorithm (1=sha1, 2=sha256) used and the last long string is the hash of the key itself.
 
 ## What is it used for?
