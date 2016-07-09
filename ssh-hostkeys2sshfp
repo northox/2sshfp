@@ -19,9 +19,9 @@ cipher4='ed25519'
 hash1='sha1'
 hash2='sha256' 
 
-for i in `seq 1 4` # cipher
+for i in 1 2 3 4 # cipher
 do
-  for j in `seq 1 2` # hash
+  for j in 1 2 # hash
   do
     eval "key_path=/etc/ssh/ssh_host_\${cipher${i}}_key.pub"
 
