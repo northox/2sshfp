@@ -14,7 +14,7 @@ as the sshfp tool seems to be dead.
 Supports rsa, dsa, **ecdsa and ed25519** ciphers and sha1/sha256 hash algorithms.
 
 ## Requirements
-openssl, sed and awk commands
+openssl, sed, tr and awk shell commands - basic stuff
 
 ## SSHFP records?
 SSHFP are basically host ssh key fingerprints stored in DNS records. If you can trust DNS 
