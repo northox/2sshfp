@@ -45,25 +45,5 @@ Recommended - Run this locally. It creates SSHFP record out of `/etc/ssh/ssh_hos
     vortex IN SSHFP 4 1 C01A3E12F70139C56EACC2DE93B0E5C7CC8D6BB4
     vortex IN SSHFP 4 2 197D56859D92B89003456E30782AE449EE8A136766831C482C81344ADFCD5E4E
 
-### ssh-keyscan2sshfp
-Not recommended - This one used ssh-keyscan and connects to ssh servers to extract SSH keys remotely. 
-Oviously, you need to trust your network.. which you don't right? - ARP/DNS poisoning, etc. 
-
-    > ./ssh-keyscan2sshfp bombshock.mantor.org shockwave.mantor.org
-    ####################################################
-    Should not be used unless you can really trust your
-    network... but who can?!?
-    ####################################################
-    bombshock.mantor.org. IN SSHFP 2 1 021866EBA03E5F338EE63762A70C767204490467
-    bombshock.mantor.org. IN SSHFP 2 2 3955BB4170D723C2EDA27F7AD7A79CF438B940EA2D92A7929AE77ED9561F70C4
-    bombshock.mantor.org. IN SSHFP 1 1 74676382DC8459218C42983A01902552529BDF9F
-    bombshock.mantor.org. IN SSHFP 1 2 76C19705F568AF6E50D775FCA7BA2C029D34018D29C1502FEB06992005EC7B38
-    bombshock.mantor.org. IN SSHFP 3 1 3FB05E3FC65428C8B030FB91E88EFA17C918E97D
-    bombshock.mantor.org. IN SSHFP 3 2 1BCB86FA73AD341B7DFBEEA84439FA316F6916E1D912D1B71C03CA42F5B4AE89
-    shockwave.mantor.org. IN SSHFP 2 1 4AC5A2243CEB9D7174DB456613B454D6299F30A8
-    shockwave.mantor.org. IN SSHFP 2 2 15A706840F1FDEF2A764F42A528E8A10415219C5470DB62E924D9778B222452E
-    shockwave.mantor.org. IN SSHFP 1 1 D989A5820A0E4FD4D3A03A1297E0D9897BA59063
-    shockwave.mantor.org. IN SSHFP 1 2 9DDB3AF589D4063CEF5F188C1420509C118408855218865934A05F32FE2FDB31
-
 ## license
 Public domain - A gift to the Internet
