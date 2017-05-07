@@ -11,7 +11,8 @@ Now it has evolved and also support [ed25519](http://tools.ietf.org/html/draft-m
 as the sshfp tool seems to be dead.
 
 ## Features
-Supports rsa, dsa, **ecdsa and ed25519** ciphers and sha1/sha256 hash algorithms.
+- Supports rsa, dsa, **ecdsa and ed25519** ciphers and sha1/sha256 hash algorithms.
+- Tested on OpenBSD, FreeBSD and Linux
 
 ## Requirements
 openssl, sed, tr and awk shell commands - basic stuff
