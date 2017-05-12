@@ -1,7 +1,7 @@
 #!/bin/sh
 # A secure way to create SSHFP records (local) | Danny Fullerton - mantor.org | license: public domain
 if [ $# -ne 1 ] || [ "$1" = "-h" ]; then
-  printf "Usage:\t$0 <hostname>\n\t$0 galvatron.mantor.org." >&2
+  printf "Usage:\t$0 <hostname>\n\t$0 galvatron.mantor.org.\n" >&2
   exit 1
 fi
 name=$1
@@ -13,7 +13,7 @@ for i in 1 2 3 4; do # cipher
     if [ -f $key_path ]; then
       eval "h=\${hash${j}}"
       sshfp=`awk '{print $2}' $key_path | openssl base64 -d -A | openssl dgst -${h} | sed 's/^.* //' | awk '{print $1}' | tr '[a-z]' '[A-Z]'`
-      printf "${name} IN SSHFP ${i} ${j} ${sshfp}"
+      printf "${name} IN SSHFP ${i} ${j} ${sshfp}\n"
     fi
   done
 done
