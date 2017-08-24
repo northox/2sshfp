@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # A secure way to create SSHFP records (local) | Danny Fullerton - mantor.org | license: public domain
 if [ $# -ne 1 ] || [ "$1" = "-h" ]; then
   printf "Usage:\t$0 <hostname>\n\t$0 galvatron.mantor.org.\n" >&2
