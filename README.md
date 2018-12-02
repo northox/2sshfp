@@ -1,21 +1,20 @@
 # 2sshfp
-Very basic shell scripts to create SSHFP DNS records.
+Very basic shell script to create SSHFP DNS records.
 
 ## Description
-I wrote those very basic script to create SSHFP DNS records when I realized 
+I wrote this very basic script to create SSHFP DNS records when I realized 
 [sshfp tool](https://github.com/xelerance/sshfp) didn't support ECDSA (i.e. 
 ecdsa-sha2-nistp256) and [my patch](https://github.com/xelerance/sshfp/pull/2) 
-would take years before getting in to production. See [draft-os-ietf-sshfp-ecdsa-sha2-00](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00).
+would take years before getting in to production. 
 
-Now it has evolved and also support [ed25519](http://tools.ietf.org/html/draft-moonesamy-sshfp-ed25519-01) 
-as the sshfp tool seems to be dead.
+It creates SSHFP record out of `/etc/ssh/ssh_host_*_key.pub` keys.
 
 ## Features
-- Supports rsa, dsa, **ecdsa and ed25519** ciphers and sha1/sha256 hash algorithms.
+- Supports rsa, dsa, **[ecdsa](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00) and [ed25519](http://tools.ietf.org/html/draft-moonesamy-sshfp-ed25519-01)** ciphers and sha1/sha256 hash algorithms.
 - Tested on OpenBSD, FreeBSD and Linux
 
 ## Requirements
-openssl, sed, tr and awk shell commands - basic stuff
+openssl, sed, tr and awk commands - basic stuff
 
 ## SSHFP records?
 SSHFP are basically host ssh key fingerprints stored in DNS records. If you can trust DNS 
@@ -30,11 +29,10 @@ hash algorithm (1=sha1, 2=sha256) used and the last long string is the hash of t
 ## What is it used for?
 Merge the resulting DNS records in your zone and use them: 
 
-  - configure SSH client to verify SSHFP records via 'VerifyHostKeyDNS yes';
-  - make sure you're using DNSSEC. ;)
+  - configure SSH client to verify SSHFP records via `VerifyHostKeyDNS yes`;
+  - make sure you're using DNSSEC ;)
 
-### 2sshfp (using local host keys)
-Recommended - Run this locally. It creates SSHFP record out of `/etc/ssh/ssh_host_*_key.pub` keys.
+### Usage
 
     > ./2sshfp vortex
     vortex IN SSHFP 1 1 BBE600FEB1200CB02D5A2912DB37648F65B4A2FE
