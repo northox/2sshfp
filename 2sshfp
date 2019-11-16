@@ -5,9 +5,9 @@ if [ $# -ne 1 ] || [ "$1" = "-h" ]; then
   exit 1
 fi
 name=$1
-cipher1='rsa'; cipher2='dsa'; cipher3='ecdsa'; cipher4='ed25519'
+cipher1='rsa'; cipher2='dsa'; cipher3='ecdsa'; cipher4='ed25519'; cipher5:'xmss'
 hash1='sha1'; hash2='sha256' 
-for i in 1 2 3 4; do # cipher
+for i in 1 2 3 4 5; do # cipher
   for j in 1 2; do # hash
     eval "key_path=/etc/ssh/ssh_host_\${cipher${i}}_key.pub"
     if [ -f $key_path ]; then
