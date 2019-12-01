@@ -10,7 +10,7 @@ would take years before getting in to production.
 It creates SSHFP record out of `/etc/ssh/ssh_host_*_key.pub` keys.
 
 ## Features
-- Supports rsa, dsa, **[ecdsa](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00) and [ed25519](http://tools.ietf.org/html/draft-moonesamy-sshfp-ed25519-01)** ciphers and sha1/sha256 hash algorithms.
+- Supports rsa, dsa, **[ecdsa](http://tools.ietf.org/html/draft-os-ietf-sshfp-ecdsa-sha2-00), [ed25519](http://tools.ietf.org/html/draft-moonesamy-sshfp-ed25519-01) and [xmss](https://tools.ietf.org/html/draft-mu-curdle-ssh-xmss-00)** ciphers and sha1/sha256 hash algorithms.
 - Tested on OpenBSD, FreeBSD and Linux
 
 ## Requirements
@@ -23,7 +23,7 @@ query (i.e. DNSSEC) you can validate SSH's host fingerprint automatically.
 Here's one: 
 ```soundwave.mantor.org. IN SSHFP 1 1 F48459337A91E833FA259C8F95D751D22D8541C2```
 
-The first number refers to the cipher of the key (1=rsa, 2=dsa, 3=ecdsa, 4=ed25519), the second number is the 
+The first number refers to the cipher of the key (1=rsa, 2=dsa, 3=ecdsa, 4=ed25519, 5=xmss), the second number is the 
 hash algorithm (1=sha1, 2=sha256) used and the last long string is the hash of the key itself.
 
 ## What is it used for?
